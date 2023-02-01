@@ -3,15 +3,14 @@ public class Proj {
     static int playerhp = 100; 
     static int opponenthp = 100;
 
-
     public static void main(String[] args) {
-       mainmenu(); 
-       
-        
-
-        
+        mainmenu();
+       while(playerhp>0 && opponenthp>0){
+        attack(); 
+        botattack(); 
+       }  
     }
-
+    //Det här är min start meny. 
     static void mainmenu(){
         Scanner scan = new Scanner(System.in);
         
@@ -48,24 +47,34 @@ public class Proj {
                                                 Tank""";
         System.out.println(message);
 
-        String Char = "";
         
+        /*
+        Här använder jag en while och for loop 
+        för att göra att användaren skriver in rätt kommandon. 
+        Sedan anvönder jag mig av en array för att kunna itterera över alla tillåtna värden 
+        använderen ska kunna 
+        skriva både 1, 2 eller 3 eller first, second eller third
+        Jag typkonvertar även bara för att visa att jag kan göra det :) 
+        Varsågod Jowhan 
+         */
+        char tecken = '0';
         while (true) {
             System.out.println("What character do you want to play as?");
-            Char = scan.nextLine(); 
+            int tex_tal =(int) tecken ;
+            String c = scan.nextLine(); 
             String numbersWord[] = {"first", "second", "third"}; 
             String numbers[] = {"1", "2", "3"}; 
 
             boolean found = false;
 
             for (String element : numbersWord) {
-                if (element.toLowerCase().equals(Char.toLowerCase())) {
+                if (element.toLowerCase().equals(c.toLowerCase())) {
                     found = true;
                     break;
                 }
             }
             for (String element : numbers) {
-                if (element.toLowerCase().equals(Char.toLowerCase())) {
+                if (element.toLowerCase().equals(c.toLowerCase())) {
                     found = true;
                     break;
                 };
@@ -76,10 +85,85 @@ public class Proj {
 
         System.out.println("Exellent choice");
     }
+    /*
+     Detta är en metod för spelarens attacker 
+     */
+    static void attack() {
+        String attack = ""; 
+        Scanner scan = new Scanner(System.in);
+        System.out.println("You have the first move chose between hig attack = Q, Mid attack = W and Low attack = E");
+        int attackhigh = 20; 
+        int attackmid = 15; 
+        int attacklow = 10; 
+        attack = scan.nextLine(); 
+        
+        switch (attack.toLowerCase()) {
+            case ("q"):
+             botblock(1, attackhigh);
+              break;
+            case ("w"):
+             botblock(2, attackmid);
+              break;
+            case ("e"):
+            botblock(3, attacklow);
+          }
+    }
 
-    static void attackandblock() {
-        Scanner attack = new Scanner(System.in);
-        System.out.println("");
-
+    static void botblock(int attack, int damage){
+        int block = (int)(Math.random() * 3+1); 
+        if(attack == block){
+            System.out.println("Your opponent blocked!");
+            System.out.println(opponenthp);
+        }
+        else{
+            opponenthp -= damage; 
+            System.out.println("you hit "+damage);
+            System.out.println(opponenthp);
+        }
+    }
+    static void botattack(){
+        int attack = (int)(Math.random() * 3+1); 
+        int damage = 0; 
+        if(attack == 1){
+            damage = 20; 
+        }
+        else if (attack == 2){
+            damage = 15; 
+        }
+        else{
+            damage = 10; 
+        }
+        System.out.println("Bot hit you");
+        System.out.println("You can chose to block Q = high, W = mid, E = low");
+        Scanner scan = new Scanner(System.in);
+        String block = scan.nextLine(); 
+        if(block.equalsIgnoreCase("q")){
+            if(attack == 1){
+                System.out.println("You blocked!");
+            }
+            else{
+                System.out.println("You got hit!");
+                playerhp -= damage; 
+            }
+        }
+        else if(block.equalsIgnoreCase("w")){
+            if(attack == 2){
+                System.out.println("You blocked!");
+            }
+            else{
+                System.out.println("You got hit!");
+                playerhp -= damage; 
+            }
+        }
+        else if(block.equalsIgnoreCase("e")){
+            if(attack == 3){
+                System.out.println("You blocked!");
+            }
+            else{
+                System.out.println("You got hit!");
+                playerhp -= damage; 
+            }
+    }
+    System.out.println("Your hp is "+playerhp); 
     }
 }
