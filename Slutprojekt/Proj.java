@@ -66,7 +66,7 @@ public class Proj {
             String numbers[] = {"1", "2", "3"}; 
 
             boolean found = false;
-            System.out.println("Chose betwen 1, 2, 3 or First, second , third");
+            System.out.println("Chose betwen 1, 2, 3 or First, second , third ");
 
             for (String element : numbersWord) {
                 if (element.toLowerCase().equals(c.toLowerCase())) {
@@ -117,12 +117,12 @@ public class Proj {
         int block = (int)(Math.random() * 3+1); 
         if(attack == block){
             System.out.println("Your opponent blocked!");
-            System.out.println(opponenthp);
+            System.out.println("opponent hp is "+opponenthp);
         }
         else{
             opponenthp -= damage; 
-            System.out.println("you hit "+damage);
-            System.out.println(opponenthp);
+            System.out.println("you hit oponent for "+damage);
+            System.out.println("opponent hp is "+opponenthp);
         }
     }
     static void botattack(){
