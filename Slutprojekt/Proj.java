@@ -66,6 +66,7 @@ public class Proj {
             String numbers[] = {"1", "2", "3"}; 
 
             boolean found = false;
+            System.out.println("Chose betwen 1, 2, 3 or First, second , third");
 
             for (String element : numbersWord) {
                 if (element.toLowerCase().equals(c.toLowerCase())) {
@@ -91,7 +92,7 @@ public class Proj {
     static void attack() {
         String attack = ""; 
         Scanner scan = new Scanner(System.in);
-        System.out.println("You have the first move chose between hig attack = Q, Mid attack = W and Low attack = E");
+        System.out.println(" Chose between hig attack = Q (20 damage), Mid attack = W (15 damage) and Low attack = E (10 damage)");
         int attackhigh = 20; 
         int attackmid = 15; 
         int attacklow = 10; 
@@ -106,6 +107,9 @@ public class Proj {
               break;
             case ("e"):
             botblock(3, attacklow);
+            break; 
+            default: 
+            System.out.println("You my friend have not yet learnd your potentail next time chose between q, w or e to unleash your true power ");
           }
     }
 
@@ -133,7 +137,7 @@ public class Proj {
         else{
             damage = 10; 
         }
-        System.out.println("Bot hit you");
+        System.out.println("Bot is attacking you you");
         System.out.println("You can chose to block Q = high, W = mid, E = low");
         Scanner scan = new Scanner(System.in);
         String block = scan.nextLine(); 
@@ -163,6 +167,7 @@ public class Proj {
                 System.out.println("You got hit!");
                 playerhp -= damage; 
             }
+           
     }
     System.out.println("Your hp is "+playerhp); 
     }
