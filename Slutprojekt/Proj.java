@@ -66,7 +66,7 @@ public class Proj {
             String numbers[] = {"1", "2", "3"}; 
 
             boolean found = false;
-            System.out.println("Chose betwen 1, 2, 3 or First, second , third ");
+            
 
             for (String element : numbersWord) {
                 if (element.toLowerCase().equals(c.toLowerCase())) {
@@ -82,6 +82,7 @@ public class Proj {
             }
         
             if (found) break;
+            System.out.println("That is not a valid input, Chose betwen 1, 2, 3 or First, second , third ");
         }
 
         System.out.println("Exellent choice");
