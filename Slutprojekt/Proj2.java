@@ -135,16 +135,7 @@ public class Proj2 {
                 continue;
             }
 
-            if(windowSeat == 1){
-                for(int i = 0; i < seats.length; i++){
-                    if ((i%4==0) || ((i+1)%4==0)){
-                        seats[i] = windowSeat; 
-                        System.out.println("The seat number you have is "+i);
-                        break;
-                    }
-                    else continue;
-                }  
-            }
+            
 
 
             
@@ -159,11 +150,22 @@ public class Proj2 {
             break;
         }
 
-        
+        if(windowSeat == 1){
+            for(int i = 0; i < seats.length; i++){
+                if ((i%4==0) || ((i+1)%4==0)){
+                    if(seats[i]==0){
+                        seats[i] = windowSeat; 
+                        System.out.println("The Windowseat number you have is "+i);
+                        break;
 
-        
+                    }
 
-        
+                   
+                }
+            }  
+        }
+
+        else {
          for (int i = 0; i < seats.length; i++){
             if (seats [i] == 0){
                 seats[i] = sNumber; 
@@ -173,6 +175,7 @@ public class Proj2 {
                 break;
             }
          }
+        }
     }
 
     // Detta är metoden för att kolla hur många lediga platseer det finns på bussen. Metoden är uppbyggd av en for loop som loopar igenom arrayen "seats" och om en plats är lika med 0 då plussas ett till variabeln "tot" som sedan printas ut till användaren. 
